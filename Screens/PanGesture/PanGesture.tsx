@@ -1,13 +1,11 @@
 /* eslint-disable prettier/prettier */
 import 'react-native-gesture-handler';
-import React, {useEffect} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
 
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
-  withTiming,
-  Easing,
   useAnimatedGestureHandler,
   withSpring,
 } from 'react-native-reanimated';
@@ -16,11 +14,13 @@ import {
   PanGestureHandlerGestureEvent,
   GestureHandlerRootView,
 } from 'react-native-gesture-handler';
-import {NavigationContainer} from '@react-navigation/native';
 type ContextInterface = {
   translateX: number;
   translateY: number;
 };
+
+const SIZE = 50.0;
+const CIRCLE_RADIUS = SIZE * 2;
 
 const PanGesture = () => {
   const translateX = useSharedValue(0);
@@ -39,8 +39,11 @@ const PanGesture = () => {
       translateY.value = event.translationY + context.translateY;
     },
     onEnd: () => {
-      translateX.value = withSpring(0);
-      translateY.value = withSpring(0);
+      const distance = Math.sqrt(translateX.value ** 2 + translateY.value ** 2);
+      if (distance < CIRCLE_RADIUS + SIZE / 2) {
+        translateX.value = withSpring(0);
+        translateY.value = withSpring(0);
+      }
     },
   });
 
@@ -59,11 +62,11 @@ const PanGesture = () => {
 
   return (
     <GestureHandlerRootView style={[styles.container__main]}>
-      <PanGestureHandler onGestureEvent={panGestureEvent}>
-        <Animated.View style={styles.container__circle}>
+      <View style={styles.container__circle}>
+        <PanGestureHandler onGestureEvent={panGestureEvent}>
           <Animated.View style={[styles.square, rStyle]} />
-        </Animated.View>
-      </PanGestureHandler>
+        </PanGestureHandler>
+      </View>
     </GestureHandlerRootView>
   );
 };
@@ -75,18 +78,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   square: {
-    width: 100,
-    height: 100,
+    width: SIZE,
+    height: SIZE,
     backgroundColor: 'rgba(0,0,256,0.5)',
     borderRadius: 20,
   },
   container__circle: {
-    width: 300,
-    height: 300,
-    borderRadius: 150,
-    backgroundColor: 'red',
+    width: CIRCLE_RADIUS * 2,
+    height: CIRCLE_RADIUS * 2,
+    borderRadius: CIRCLE_RADIUS,
     justifyContent: 'center',
     alignItems: 'center',
+    borderWidth: 5,
+    borderColor: 'rgba(0,0,256,0.5)',
+    backgroundColor: 'red',
   },
 });
 
