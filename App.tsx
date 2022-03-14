@@ -1,44 +1,20 @@
 import 'react-native-gesture-handler';
-import React, {useEffect} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {fonts} from './assets/Data';
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withTiming,
-  Easing,
-} from 'react-native-reanimated';
+import React from 'react';
+
+import {NavigationContainer} from '@react-navigation/native';
+import MainApp from './Navigation/MainApp/MainApp';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {LogBox} from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs(); //Ignore all log notifications
 const App = () => {
-  const offset = useSharedValue(100);
-
-  const animatedStyles = useAnimatedStyle(() => {
-    return {
-      width: offset.value,
-    };
-  });
-
-  useEffect(() => {
-    offset.value = withTiming(300, {
-      duration: 5000,
-      easing: Easing.ease,
-    });
-  }, [offset]);
-
   return (
-    <Animated.View style={[styles.container__main, animatedStyles]}>
-      <Text style={styles.text}>Game Controller</Text>
-    </Animated.View>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <MainApp />
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
-
-const styles = StyleSheet.create({
-  container__main: {
-    backgroundColor: 'green',
-  },
-  text: {
-    fontFamily: fonts.extraBold,
-    color: 'black',
-  },
-});
 
 export default App;
