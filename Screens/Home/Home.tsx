@@ -3,15 +3,16 @@ import {View, Text} from 'react-native';
 import React from 'react';
 import {styles} from './Styles';
 import {Props} from '../../Navigation/MainApp/MainApp';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-export default function Home({navigation}: Props) {
+import NavigationCard from '../../Components/NavigationCard/NavigationCard';
+export default function Home({navigation, route}: Props) {
   return (
     <View style={styles.container__main}>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('PanGesture')}
-        style={styles.container__button}>
-        <Text style={styles.button__text}>Pan Gesture </Text>
-      </TouchableOpacity>
+      <NavigationCard
+        navigation={navigation}
+        path="PanGesture"
+        title={'Pan Gesture'}
+        route={route}
+      />
     </View>
   );
 }

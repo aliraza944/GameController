@@ -8,11 +8,12 @@ import {
 import PanGesture from '../../Screens/PanGesture/PanGesture';
 import Home from '../../Screens/Home/Home';
 
-type RootStack = {
+export type RootStack = {
   Home: undefined;
   PanGesture: undefined;
 };
 export type Props = StackScreenProps<RootStack, 'Home'>;
+
 const Stack = createStackNavigator<RootStack>();
 
 const HomeScreen: StackNavigationOptions = {
