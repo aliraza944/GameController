@@ -34,6 +34,7 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     paddingHorizontal: 20,
     paddingVertical: 20,
+    marginVertical: 10,
   },
   button__text: {
     color: 'black',

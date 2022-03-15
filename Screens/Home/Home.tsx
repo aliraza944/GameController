@@ -9,6 +9,12 @@ export default function Home({navigation, route}: Props) {
     <View style={styles.container__main}>
       <NavigationCard
         navigation={navigation}
+        path="Animation"
+        title={'Reanimated Introduction'}
+        route={route}
+      />
+      <NavigationCard
+        navigation={navigation}
         path="PanGesture"
         title={'Pan Gesture'}
         route={route}
