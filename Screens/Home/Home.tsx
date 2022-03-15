@@ -1,12 +1,12 @@
 /* eslint-disable prettier/prettier */
-import {View, Text} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
 import React from 'react';
 import {styles} from './Styles';
 import {Props} from '../../Navigation/MainApp/MainApp';
 import NavigationCard from '../../Components/NavigationCard/NavigationCard';
 export default function Home({navigation, route}: Props) {
   return (
-    <View style={styles.container__main}>
+    <ScrollView contentContainerStyle={styles.container__main}>
       <NavigationCard
         navigation={navigation}
         path="Animation"
@@ -25,6 +25,12 @@ export default function Home({navigation, route}: Props) {
         title={'Scroll Interpolate'}
         route={route}
       />
-    </View>
+      <NavigationCard
+        navigation={navigation}
+        path="ColorInterpolate"
+        title={'Color Interpolate'}
+        route={route}
+      />
+    </ScrollView>
   );
 }

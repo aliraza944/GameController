@@ -9,12 +9,14 @@ import PanGesture from '../../Screens/PanGesture/PanGesture';
 import Home from '../../Screens/Home/Home';
 import Animations from '../../Screens/Animations/Animations';
 import ScrollInterpolate from '../../Screens/ScrollInterpolate/ScrollInterpolate';
+import ColorInterpolate from '../../Screens/ColorInterpolate/ColorInterpolate';
 
 export type RootStack = {
   Home: undefined;
   Animation: undefined;
   PanGesture: undefined;
   ScrollInterpolate: undefined;
+  ColorInterpolate: undefined;
 };
 export type Props = StackScreenProps<RootStack, 'Home'>;
 
@@ -34,6 +36,11 @@ function MainApp() {
         name="ScrollInterpolate"
         component={ScrollInterpolate}
         options={{title: 'Scroll Interpolate', headerShown: false}}
+      />
+      <Stack.Screen
+        name="ColorInterpolate"
+        component={ColorInterpolate}
+        options={{title: 'Color Interpolate', headerShown: false}}
       />
     </Stack.Navigator>
   );
