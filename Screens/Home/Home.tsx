@@ -19,6 +19,12 @@ export default function Home({navigation, route}: Props) {
         title={'Pan Gesture'}
         route={route}
       />
+      <NavigationCard
+        navigation={navigation}
+        path="ScrollInterpolate"
+        title={'Scroll Interpolate'}
+        route={route}
+      />
     </View>
   );
 }
