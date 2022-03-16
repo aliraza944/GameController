@@ -10,6 +10,7 @@ import Home from '../../Screens/Home/Home';
 import Animations from '../../Screens/Animations/Animations';
 import ScrollInterpolate from '../../Screens/ScrollInterpolate/ScrollInterpolate';
 import ColorInterpolate from '../../Screens/ColorInterpolate/ColorInterpolate';
+import PinchGesture from '../../Screens/PinchGesture/PinchGesture';
 
 export type RootStack = {
   Home: undefined;
@@ -17,6 +18,7 @@ export type RootStack = {
   PanGesture: undefined;
   ScrollInterpolate: undefined;
   ColorInterpolate: undefined;
+  PinchGestureHandler: undefined;
 };
 export type Props = StackScreenProps<RootStack, 'Home'>;
 
@@ -41,6 +43,11 @@ function MainApp() {
         name="ColorInterpolate"
         component={ColorInterpolate}
         options={{title: 'Color Interpolate', headerShown: false}}
+      />
+      <Stack.Screen
+        name="PinchGestureHandler"
+        component={PinchGesture}
+        options={{title: 'Pinch Gesture', headerShown: false}}
       />
     </Stack.Navigator>
   );

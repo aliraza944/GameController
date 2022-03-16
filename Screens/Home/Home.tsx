@@ -31,6 +31,12 @@ export default function Home({navigation, route}: Props) {
         title={'Color Interpolate'}
         route={route}
       />
+      <NavigationCard
+        navigation={navigation}
+        path="PinchGestureHandler"
+        title={'Pinch Gesture'}
+        route={route}
+      />
     </ScrollView>
   );
 }
